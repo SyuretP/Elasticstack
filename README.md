@@ -1,5 +1,5 @@
 # Elasticstack
-Filebeat agents shipping logs to Logstash instance.
+Filebeat agents shipping logs to a Logstash instance.
 Logs are being forwarded to Elasticsearch by Logstash.
 Using Kibana to visualise the logs present in Elasticsearch database.
 
