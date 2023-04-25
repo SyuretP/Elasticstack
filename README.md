@@ -1,6 +1,8 @@
 # Elasticstack
 Filebeat agents shipping logs to a Logstash instance.
+
 Logs are being forwarded to Elasticsearch by Logstash.
+
 Using Kibana to visualise the logs present in Elasticsearch database.
 
 All services run as docker containers, check docker-compose.yml for referance.
