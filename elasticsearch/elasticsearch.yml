@@ -9,11 +9,135 @@
 #
 # Please see the documentation for further information on configuration options:
 # <http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html>
+#
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+#
+# cluster.name: my-application
+#
+# ------------------------------------ Node ------------------------------------
+
+# Use a descriptive name for your cluster:
+#
+# cluster.name: my-application
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+# node.name: node-1
+#
+# Add custom attributes to the node:
+#
+# node.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+# path.data: /path/to/data
+#
+# Path to log files:
+#
+# path.logs: /path/to/logs
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+# bootstrap.mlockall: true
+#
+# Make sure that the `ES_HEAP_SIZE` environment variable is set to about half the memory
+# available on the system and that the owner of the process is allowed to use this limit.
+
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+# network.host: 192.168.0.1
+#
+# Set a custom port for HTTP:
+#
+#http.port: 9200
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
+#
+# --------------------------------- Discovery ----------------------------------
+#
+# Pass an initial list of hosts to perform discovery when new node is started:
+# The default list of hosts is ["127.0.0.1", "[::1]"]
+#
+# discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+#
+# Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
+#
+# discovery.zen.minimum_master_nodes: 3
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery.html>
+#
+# ---------------------------------- Gateway -----------------------------------
+
+# Block initial recovery after a full cluster restart until N nodes are started:
+#
+# gateway.recover_after_nodes: 3
+#
+# For more information, see the documentation at:
+# <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-gateway.html>
+#
+# ---------------------------------- Various -----------------------------------
+#
+# Disable starting multiple nodes on a single system:
+#
+# node.max_local_storage_nodes: 1
+#
+# Require explicit names when deleting indices:
+#
+# action.destructive_requires_name: true
 
 network.host: 0.0.0.0
 cluster.name: "test"
 node.name: "node-1"
 discovery.type: single-node
+#node.master: true
+#node.data: true
+#discovery.zen.ping.multicast.enabled: false
+
+#path.data: /data/data
+#path.logs: /data/logs
+
+#----------------------- BEGIN SECURITY AUTO CONFIGURATION -----------------------
+#
+# The following settings, TLS certificates, and keys have been automatically
+
+
+# generated to configure Elasticsearch security features on 31-03-2023 19:44:15
+#
+# --------------------------------------------------------------------------------
+
+# Enable security features
+#xpack.security.enabled: true
+
+#xpack.security.enrollment.enabled: false
+
+# Enable encryption for HTTP API client connections, such as Kibana, Logstash, and Agents
+#xpack.security.http.ssl:
+#  enabled: true
+#  keystore.path: certs/http.p12
+
+# Enable encryption and mutual authentication between cluster nodes
+#xpack.security.transport.ssl:
+#  enabled: true
+#  verification_mode: certificate
+#  keystore.path: config/elastic-certificates.p12
+#  truststore.path: config/elastic-certificates.p12
+
+
+#xpack.security.authc.api_key.enabled: true
 
 xpack.security.enabled: true
 xpack.security.transport.ssl.enabled: true
@@ -23,3 +147,4 @@ xpack.security.transport.ssl.truststore.path: config/elastic-certificates.p12
 xpack.license.self_generated.type: basic
 #xpack.security.http.ssl.enabled: true
 #xpack.security.http.ssl.keystore.path: config/http.p12
+#----------------------- END SECURITY AUTO CONFIGURATION -------------------------
